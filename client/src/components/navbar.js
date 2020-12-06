@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import { Route, Link } from 'react-router-dom';
-import logo from '../logo.svg';
-import '../App.css';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class Navbar extends Component {
@@ -51,7 +48,7 @@ class Navbar extends Component {
               </section>
             ) : (
               <section className='navbar-section'>
-                <Link to='/' className='btn btn-link text-secondary'>
+                <Link to='/home' className='btn btn-link text-secondary'>
                   <span className='text-secondary'>home</span>
                 </Link>
                 <Link to='/login' className='btn btn-link text-secondary'>
@@ -65,7 +62,6 @@ class Navbar extends Component {
           </div>
           <div className='col-4 col-mr-auto'>
             <div id='top-filler'></div>
-            <img src={logo} className='App-logo' alt='logo' />
             <h1 className='App-title'>MERN Passport</h1>
           </div>
         </header>

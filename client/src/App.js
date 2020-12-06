@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Route, Link } from 'react-router-dom';
-// components
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Signup from './components/sign-up';
 import LoginForm from './components/login-form';
 import Navbar from './components/navbar';
 import Home from './components/home';
+import BottomAppBar from '../src/component/nav/BottomAppBar'
+import FaceDetectionPage from './pages/FaceDetectionPage/FaceDetectionPage';
+import HomeLandingPage from "./pages/LandingPage"
 
 class App extends Component {
   constructor() {
@@ -57,9 +59,10 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
+        <BottomAppBar/>
         <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         {/* greet user if logged in: */}
-        {this.state.loggedIn && <p>Join the party, {this.state.username}!</p>}
+        {this.state.loggedIn && <p>Welcome, {this.state.username}!</p>}
         {/* Routes to different components */}
         <Route exact path='/' component={Home} />
         <Route
@@ -67,6 +70,13 @@ class App extends Component {
           render={() => <LoginForm updateUser={this.updateUser} />}
         />
         <Route path='/signup' render={() => <Signup />} />
+        <Route exact path={"/facerec"}>
+            <FaceDetectionPage />
+        </Route>
+        <Route exact path={["/", "/home"]}>
+            <HomeLandingPage />
+        </Route>
+        
       </div>
     );
   }

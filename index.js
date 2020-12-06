@@ -3,7 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const session = require('express-session');
-// const dbConnection = require('./database');
 const MongoStore = require('connect-mongo')(session);
 const passport = require('./passport');
 const app = express();
@@ -24,9 +23,8 @@ app.use(
 app.use(bodyParser.json());
 app.use(cors());
 
-const uri = process.env.MONGODB_URI;
 mongoose
-  .connect(uri)
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/passport", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(
     () => {
       /** ready to use. The `mongoose.connect()` promise resolves to undefined. */
