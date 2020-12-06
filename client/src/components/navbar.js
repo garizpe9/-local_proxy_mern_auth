@@ -62,7 +62,7 @@ class Navbar extends Component {
           </div>
           <div className='col-4 col-mr-auto'>
             <div id='top-filler'></div>
-            <h1 className='App-title'>MERN Passport</h1>
+           
           </div>
         </header>
       </div>
