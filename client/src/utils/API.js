@@ -25,5 +25,8 @@ export default {
           Authorization: '563492ad6f91700001000001927c79f1b1dd445aa14fee7b9150cc15'
       }
     })
-  }
+  },
+
+  getQOD: function(){
+    return axios.get("http://quotes.rest/qod.json?category=inspire")}
 };

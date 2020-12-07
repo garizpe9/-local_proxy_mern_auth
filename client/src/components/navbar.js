@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import API from "../utils/API";
 
 class Navbar extends Component {
   constructor() {
     super();
     this.logout = this.logout.bind(this);
+  };
+  state={
+    quoteOfDay:""
+  };
+
+  getQuote = query =>{
+    API.getQOD(query)
+    fetch(`http://quotes.rest/qod.json?category=inspire`)
+    .then(res=>console.log("quote",res))
+    .then(res => {
+      this.setState({ quoteOfDay: res})
+    })
   }
+  componentDidMount() {
+    this.getQuote();
+  }
+
+
+
 
   logout(event) {
     event.preventDefault();
@@ -26,6 +45,9 @@ class Navbar extends Component {
         console.log('Logout error');
       });
   }
+
+ 
+
 
   render() {
     const loggedIn = this.props.loggedIn;
@@ -59,6 +81,7 @@ class Navbar extends Component {
                 </Link>
               </section>
             )}
+            
           </div>
           <div className='col-4 col-mr-auto'>
             <div id='top-filler'></div>
