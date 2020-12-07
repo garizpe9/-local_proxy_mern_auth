@@ -9,23 +9,29 @@ class Navbar extends Component {
     this.logout = this.logout.bind(this);
   };
   state={
-    quoteOfDay:""
+    quote: "",
+    author: ""
   };
 
-  getQuote = query =>{
-    API.getQOD(query)
-    fetch(`http://quotes.rest/qod.json?category=inspire`)
-    .then(res=>console.log("quote",res))
-    .then(res => {
-      this.setState({ quoteOfDay: res})
-    })
-  }
   componentDidMount() {
     this.getQuote();
   }
 
-
-
+  getQuote = query =>{
+    API.getQOD(query)
+    fetch('https://quotes.rest/qod.json?category=inspire')
+    .then(res=>console.log("quote",res.contents.quotes[0]))
+    .then(res => (res.json))
+    .then(quote => { 
+      if (quote.contents) {
+        this.setState({
+          quote: quote.contents.quotes[0].quote,
+          author: quote.contents.quotes[0].author,
+        })
+      }
+    })
+    .catch(err => console.log("Error fetching random quote. " + err));
+  }
 
   logout(event) {
     event.preventDefault();
@@ -46,10 +52,7 @@ class Navbar extends Component {
       });
   }
 
- 
-
-
-  render() {
+   render() {
     const loggedIn = this.props.loggedIn;
     console.log('navbar render, props: ');
     console.log(this.props);

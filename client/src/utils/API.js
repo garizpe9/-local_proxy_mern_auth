@@ -28,5 +28,5 @@ export default {
   },
 
   getQOD: function(){
-    return axios.get("http://quotes.rest/qod.json?category=inspire")}
+    return axios.get("https://cors-anywhere.herokuapp.com/http://quotes.rest/qod.json?category=inspire")}
 };
