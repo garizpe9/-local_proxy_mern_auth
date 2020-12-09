@@ -44,8 +44,10 @@ function Register() {
                                             Register
                                             <h5>username</h5>
                                             <TextField
-                                                onChange={handleInputChange}
+                                            
                                                 name="username"
+                                                value={this.state.username}
+                                                onChange={this.state.username}
                                             />
                                         </Typography>
                                     </Grid>
@@ -53,14 +55,15 @@ function Register() {
                                         password
                                         <br />
                                         <TextField
-                                            onChange={handleInputChange}
+                                            onChange={this.handleChange}
                                             name="password"
+                                            type="password"
                                         />
                                         <br />
                                     </Typography>
                                     <Button
                                         disabled={!(password.username && password.password)}
-                                        onClick={handleFormSubmit}>Submit
+                                        onClick={this.handleSubmit}>Submit
                                     </Button>
                                 </Paper>
                                 <Paper className={classes.paper}>

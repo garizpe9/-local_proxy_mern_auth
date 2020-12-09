@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Route} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Signup from './components/sign-up';
 import LoginForm from './components/login-form';
 import Navbar from './components/navbar';
@@ -60,6 +60,7 @@ class App extends Component {
 
   render() {
     return (
+      <Router>
       <div className='App'>
         <BottomAppBar/>
         <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
@@ -72,20 +73,21 @@ class App extends Component {
           render={() => <LoginForm updateUser={this.updateUser} />}
         />
         <Route path='/signup' render={() => <Signup />} />
-        
+        <Switch>
         <Route exact path={"/facerec"}>
-            <FaceDetectionPage />
+        <FaceDetectionPage />
         </Route>
         <Route exact path={["/"]}>
-            <HomeLandingPage />
-            <Route exact path={"/home"}>
-            <LandingPage /></Route>
+        <HomeLandingPage />
+        <Route exact path={"/home"}>
+        <LandingPage /></Route>
         </Route>
         <Route exact path={"/createjournal"}>
-            <CreateJournalPage />
-          </Route>
-        
+        <CreateJournalPage />
+        </Route>
+        </Switch>
       </div>
+      </Router>
     );
   }
 }
