@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Route} from "react-router-dom";
 import Signup from './components/sign-up';
 import LoginForm from './components/login-form';
 import Navbar from './components/navbar';
@@ -8,6 +8,8 @@ import Home from './components/home';
 import BottomAppBar from '../src/component/nav/BottomAppBar'
 import FaceDetectionPage from './pages/FaceDetectionPage/FaceDetectionPage';
 import HomeLandingPage from "./pages/LandingPage"
+import CreateJournalPage from './pages/CreateJournalPage/CreateJournalPage'
+import LandingPage from './component/LandingPage';
 
 class App extends Component {
   constructor() {
@@ -70,12 +72,18 @@ class App extends Component {
           render={() => <LoginForm updateUser={this.updateUser} />}
         />
         <Route path='/signup' render={() => <Signup />} />
+        
         <Route exact path={"/facerec"}>
             <FaceDetectionPage />
         </Route>
-        <Route exact path={["/", "/home"]}>
+        <Route exact path={["/"]}>
             <HomeLandingPage />
+            <Route exact path={"/home"}>
+            <LandingPage /></Route>
         </Route>
+        <Route exact path={"/createjournal"}>
+            <CreateJournalPage />
+          </Route>
         
       </div>
     );

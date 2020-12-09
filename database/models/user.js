@@ -10,9 +10,19 @@ const userSchema = new Schema({
 	password: { type: String, unique: false, required: false },
 	header:{type: String, unique: false, required: false },
 	entry: { type: String, required: false },
+	date: { type: Date, default: Date.now },
+	intention: String,
+	nurture: String,
+	love1: String,
+	love2: String,
+	love3: String,
+	well1: String,
+	well2: String,
+	well3: String,
+	notWell: String,
+	vent: String,
 	date: { type: Date, default: Date.now }
-
-
+  
 })
 
 // Define schema methods

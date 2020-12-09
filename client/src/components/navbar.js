@@ -10,27 +10,43 @@ class Navbar extends Component {
   };
   state={
     quote: "",
-    author: ""
+    id: ""
   };
 
   componentDidMount() {
     this.getQuote();
   }
+  getQuote = () =>{
+  const options = {
+    method: 'GET',
+    url: 'https://shazam.p.rapidapi.com/auto-complete',
+    params: {term: 'kiss the', locale: 'en-US'},
+    headers: {
+      'x-rapidapi-key': 'd2c174c9b0msh4dccfca97fa9159p1945e7jsna80b5e5ecc3f',
+      'x-rapidapi-host': 'shazam.p.rapidapi.com'
+    }
+  };
 
-  getQuote = query =>{
-    API.getQOD(query)
-    fetch('https://quotes.rest/qod.json?category=inspire')
-    .then(res=>console.log("quote",res.contents.quotes[0]))
-    .then(res => (res.json))
-    .then(quote => { 
-      if (quote.contents) {
-        this.setState({
-          quote: quote.contents.quotes[0].quote,
-          author: quote.contents.quotes[0].author,
-        })
-      }
-    })
-    .catch(err => console.log("Error fetching random quote. " + err));
+  axios.request(options).then(function (response) {
+    console.log(response.data);
+  }).catch(function (error) {
+    console.error(error);
+  });
+
+
+const optionsA = {
+  method: 'GET',
+  url: 'https://healthruwords.p.rapidapi.com/v1/quotes/',
+  params: {t: 'wisdom, compassion, courage, gratitude, happiness, hope, kindness, motivational, positivity', maxR: '1', size: 'medium'},
+  headers: {
+    'x-rapidapi-key': 'd2c174c9b0msh4dccfca97fa9159p1945e7jsna80b5e5ecc3f',
+    'x-rapidapi-host': 'healthruwords.p.rapidapi.com'
+  }
+};
+
+axios.request(optionsA)
+.then(response =>  this.setState({quote: response.data[0].media, id: response.data[0].id}))
+.catch(err => console.log(err));
   }
 
   logout(event) {
@@ -50,7 +66,7 @@ class Navbar extends Component {
       .catch((error) => {
         console.log('Logout error');
       });
-  }
+  };
 
    render() {
     const loggedIn = this.props.loggedIn;
@@ -84,7 +100,7 @@ class Navbar extends Component {
                 </Link>
               </section>
             )}
-            
+            <img src={this.state.quote} alt={this.state.id}></img>
           </div>
           <div className='col-4 col-mr-auto'>
             <div id='top-filler'></div>
