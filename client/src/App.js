@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import Signup from './components/sign-up';
-import LoginForm from './components/login-form';
+import LoginForm from './pages/Passport/login';
 import Navbar from './components/navbar';
 import Home from './components/home';
+import Register from './pages/Passport/register'
 import BottomAppBar from '../src/component/nav/BottomAppBar'
 import FaceDetectionPage from './pages/FaceDetectionPage/FaceDetectionPage';
 import HomeLandingPage from "./pages/LandingPage"
@@ -72,7 +72,7 @@ class App extends Component {
           path='/login'
           render={() => <LoginForm updateUser={this.updateUser} />}
         />
-        <Route path='/signup' render={() => <Signup />} />
+        <Route path='/signup' render={() => <Register />} />
         <Switch>
         <Route exact path={"/facerec"}>
         <FaceDetectionPage />
