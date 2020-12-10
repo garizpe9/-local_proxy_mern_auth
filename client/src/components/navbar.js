@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import API from "../utils/API";
+
 
 class Navbar extends Component {
   constructor() {
@@ -34,19 +34,19 @@ class Navbar extends Component {
   });
 
 
-const optionsA = {
-  method: 'GET',
-  url: 'https://healthruwords.p.rapidapi.com/v1/quotes/',
-  params: {t: 'wisdom, compassion, courage, gratitude, happiness, hope, kindness, motivational, positivity', maxR: '1', size: 'medium'},
-  headers: {
-    'x-rapidapi-key': 'd2c174c9b0msh4dccfca97fa9159p1945e7jsna80b5e5ecc3f',
-    'x-rapidapi-host': 'healthruwords.p.rapidapi.com'
-  }
-};
+// const optionsA = {
+//   method: 'GET',
+//   url: 'https://healthruwords.p.rapidapi.com/v1/quotes/',
+//   params: {t: 'wisdom, compassion, courage, gratitude, happiness, hope, kindness, motivational, positivity', maxR: '1', size: 'medium'},
+//   headers: {
+//     'x-rapidapi-key': 'd2c174c9b0msh4dccfca97fa9159p1945e7jsna80b5e5ecc3f',
+//     'x-rapidapi-host': 'healthruwords.p.rapidapi.com'
+//   }
+// };
 
-axios.request(optionsA)
-.then(response =>  this.setState({quote: response.data[0].media, id: response.data[0].id}))
-.catch(err => console.log(err));
+// axios.request(optionsA)
+// .then(response =>  this.setState({quote: response.data[0].media, id: response.data[0].id}))
+// .catch(err => console.log(err));
   }
 
   logout(event) {
@@ -100,7 +100,7 @@ axios.request(optionsA)
                 </Link>
               </section>
             )}
-            <img src={this.state.quote} alt={this.state.id}></img>
+            
           </div>
           <div className='col-4 col-mr-auto'>
             <div id='top-filler'></div>

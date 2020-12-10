@@ -3,13 +3,13 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import LoginForm from './pages/Passport/login';
 import Navbar from './components/navbar';
-import Home from './components/home';
 import Register from './pages/Passport/register'
 import BottomAppBar from '../src/component/nav/BottomAppBar'
 import FaceDetectionPage from './pages/FaceDetectionPage/FaceDetectionPage';
 import HomeLandingPage from "./pages/LandingPage"
-import CreateJournalPage from './pages/CreateJournalPage/CreateJournalPage'
-import LandingPage from './component/LandingPage';
+import CreateJournalPage from './pages/CreateJournalPage/CreateJournalPage';
+import JournalEntries from './component/journal/JournalEntry'
+import Home from './pages/Passport/home';
 
 class App extends Component {
   constructor() {
@@ -77,14 +77,18 @@ class App extends Component {
         <Route exact path={"/facerec"}>
         <FaceDetectionPage />
         </Route>
-        <Route exact path={["/"]}>
+        <Route exact path={["/home"]}>
         <HomeLandingPage />
-        <Route exact path={"/home"}>
-        <LandingPage /></Route>
         </Route>
         <Route exact path={"/createjournal"}>
         <CreateJournalPage />
         </Route>
+        <Route exact path={"/journalentries"}>
+          <JournalEntries />
+        </Route>
+        <Route exact path={"/createjournal"}>
+          <CreateJournalPage />
+            </Route>
         </Switch>
       </div>
       </Router>

@@ -9,6 +9,8 @@ import { Button, CardContent,
 } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import axios from 'axios'
+import Heal from '../../component/Healthruwords/Healthruwords'
+
 
 class LoginForm extends Component {
     constructor() {
@@ -102,7 +104,7 @@ class LoginForm extends Component {
                                                     </Typography>
                                                     <Button
                                                         controlId="loginBtn"
-                                                        onClick={this.handleSubmit}
+                                                        onClick={this.handleSubm}
                                                         variant="primary"
                                                         size="large"
                                                         type="submit">
@@ -117,6 +119,7 @@ class LoginForm extends Component {
                                                         type="submit">
                                                             Click here!
                                                     </Button>
+                                                   <Heal/>
                                                 </Paper>
                                                 </Grid>
                                         </CardContent>
